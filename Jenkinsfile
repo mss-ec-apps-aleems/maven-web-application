@@ -1,3 +1,4 @@
+
 node ('master')
 {
 def mavenHome= tool name: "maven3.8.4"
@@ -29,4 +30,12 @@ sshagent(['cfa975a4-4874-48c3-b270-cab6478d4ca3']) {
 }
 }
 
+stage('SendNotification')
+{
+emailext body: '''Build over
+
+
+Regards
+Aleem Shariff''', subject: 'Build Over', to: 'jamalsha55@gmail.com'
+}
 }
